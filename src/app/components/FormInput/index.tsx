@@ -3,71 +3,55 @@ import React from 'react';
 import styles from './styles.module.scss';
 
 interface Props {
-  className?: string;
-  disabled?: boolean;
-  error?: string;
-  errorClassName?: string;
-  inputClassName?: string;
-  isTextarea?: boolean;
-  inputType: string;
-  label?: string | object;
-  labelClassName?: string;
-  name: string;
-  onBlur?: (e: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
-  onChange: (e: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
-  onFocus?: (e: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
-  placeholder?: string;
-  readOnly?: boolean;
-  touched?: boolean;
-  submitCount?: number;
+  id: string;
+  label?: string;
+  type?: string;
+  validationSchema?: {
+    required: string;
+    maxLength: {
+      value: number;
+      message: string;
+    };
+    minLength: {
+      value: number;
+      message: string;
+    };
+    pattern: {
+      value: any;
+      message: string;
+    };
+  };
+  errors?: {
+    message: string;
+  };
+  isDirty?: boolean;
+  register: any;
+  onChange?: (e: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
 }
 
-function FormInput({
-  className = '',
-  disabled = false,
-  error = '',
-  errorClassName = '',
-  inputClassName = '',
-  isTextarea = false,
-  inputType,
-  label = '',
-  labelClassName = '',
-  name,
-  onBlur,
-  onChange,
-  onFocus,
-  placeholder = '',
-  readOnly = false,
-  touched,
-  submitCount
-}: Props) {
-  const InputComponent = isTextarea ? 'textarea' : 'input';
-  const showError =
-    (touched === undefined || touched) && error && (submitCount === undefined || submitCount > 0);
+function FormInput({ id, label, type, register, validationSchema, errors, isDirty, onChange }: Props) {
   return (
-    <div className={`column start ${className}`}>
-      {label && (
-        <label htmlFor={name} className={`${labelClassName} m-bottom-1`}>
-          {label}
-        </label>
-      )}
-      <InputComponent
-        className={`${inputClassName} ${styles.input} ${showError ? styles.error : ''}`}
-        name={name}
-        id={name}
-        type={inputType}
-        placeholder={placeholder}
+    <div className={`m-bottom-4 ${styles.container}`}>
+      <input
+        type={type}
+        id={id}
+        name={id}
+        autoComplete="off"
         onChange={onChange}
-        onFocus={onFocus}
-        onBlur={onBlur}
-        disabled={disabled}
-        readOnly={readOnly}
+        ref={register(validationSchema)}
+        className={`base-text ${styles.input} ${isDirty ? styles.filled : ''}`}
       />
-      <span className={`${errorClassName} ${styles.errorText} ${showError ? styles.visible : ''}`}>
-        {error}
-      </span>
+      <label className="base-text" htmlFor={id}>
+        {label}
+      </label>
+      {errors && <small className={`small-text fw-semibold ${styles.error}`}>{errors.message}</small>}
     </div>
   );
 }
+
+FormInput.defaultProps = {
+  type: 'text',
+  validationSchema: {}
+};
 
 export default FormInput;
