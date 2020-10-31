@@ -7,16 +7,16 @@ interface Props {
   label?: string;
   type?: string;
   validationSchema?: {
-    required: string;
-    maxLength: {
+    required?: string;
+    maxLength?: {
       value: number;
       message: string;
     };
-    minLength: {
+    minLength?: {
       value: number;
       message: string;
     };
-    pattern: {
+    pattern?: {
       value: any;
       message: string;
     };
