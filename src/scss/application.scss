@@ -33,10 +33,21 @@ body {
     border: 1px solid $blue;
     color: $white;
 
-    &:hover,
-    &:focus {
+    &:hover {
       background-color: transparent;
       color: $blue;
+    }
+  }
+
+  &.secondary {
+    background-color: transparent;
+    border: 1px solid $white;
+    color: $white;
+    padding: 16px 32px;
+
+    &:hover {
+      background-color: $white;
+      color: $cod-gray;
     }
   }
 
@@ -51,8 +62,7 @@ body {
   text-decoration: underline;
   transition: color $quick-transition-duration $transition-function;
 
-  &:hover,
-  &:focus {
+  &:hover {
     color: $white;
     text-decoration: none;
   }
@@ -60,4 +70,12 @@ body {
 
 .white-color {
   color: $white;
+}
+
+.light-gray-color {
+  color: $light-gray;
+}
+
+.blue-color {
+  color: $blue;
 }
