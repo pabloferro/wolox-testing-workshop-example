@@ -1,0 +1,11 @@
+@import 'variables/colors';
+
+.nav {
+  box-shadow: 1px 3px 4px rgba($black, 0.5);
+}
+
+.nav-content {
+  max-width: 100%;
+  padding: 12px 14px;
+  width: 1200px;
+}
