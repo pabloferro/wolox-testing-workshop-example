@@ -1,15 +1,10 @@
 import i18next from 'i18next';
 
 i18next.addResources('es', 'Login', {
-  login: 'Iniciar sesión',
-  loginExplanation: 'Ingrese los siguientes datos',
-  enter: 'Ingresar',
-  forgotPassword: 'Olvidé mi contraseña',
-  email: 'E-mail',
-  emailPlaceholder: 'Ej: nombre@empresa.com',
-  password: 'Contraseña',
-  passwordPlaceholder: 'Ingrese su contraseña',
-  createAccount: 'Crear cuenta',
-  invalidCredentials: 'Credenciales incorrectas',
-  error: 'Ocurrió un error en el login'
+  login: 'DC Heroes - Login',
+  loginExplanation: 'A react app example to show testing in React applications.',
+  enter: 'Log In',
+  email: 'Email',
+  password: 'Password',
+  createAccount: 'Don’t have an account?'
 });

@@ -1,28 +1,43 @@
 @import 'variables/colors';
+@import 'variables/variables';
+
+.container {
+  position: relative;
+  width: 100%;
+}
 
 .input {
-  background-color: $white;
-  border-radius: 5px;
-  border-bottom: 2px solid $gray;
-  height: 30px;
-  padding: 0 12px;
+  background-color: $westar;
+  border-bottom: 3px solid transparent;
+  border-radius: 4px;
+  color: $cod-gray;
+  line-height: 0;
+  padding: 20px 16px 12px;
+  width: 100%;
 
-  &:focus {
-    border-bottom: 2px solid $blue;
+  + label {
+    color: $cod-gray;
+    left: 16px;
+    pointer-events: none;
+    position: absolute;
+    top: 16px;
+    transform-origin: left 0;
+    transition: transform $transition-duration $transition-function;
+    user-select: none;
+    width: 100%;
   }
 
-  &.error {
-    border-bottom: 2px solid $red;
+  &:focus,
+  &.filled {
+    border-bottom-color: $blue;
+
+    + label {
+      color: $blue;
+      transform: translate(-2px, -14px) scale(0.85);
+    }
   }
 }
 
-.error-text {
+.error {
   color: $red;
-  font-size: 12px;
-  height: 20px;
-  visibility: hidden;
-
-  &.visible {
-    visibility: visible;
-  }
 }

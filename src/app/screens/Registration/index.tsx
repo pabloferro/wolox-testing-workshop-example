@@ -1,13 +1,13 @@
 import React, { useCallback } from 'react';
 import i18next from 'i18next';
 
-import FormInput from '~components/FormInput';
+// import FormInput from '~components/FormInput';
 import PATHS from '~components/Routes/paths';
-import { stringArrayToObject } from '~utils/array';
+// import { stringArrayToObject } from '~utils/array';
 
 import styles from './styles.module.scss';
 
-const FIELDS = stringArrayToObject(['name', 'surname', 'email', 'password', 'confirmPassword']);
+// const FIELDS = stringArrayToObject(['name', 'surname', 'email', 'password', 'confirmPassword']);
 
 function RegistrationContainer() {
   /* eslint-disable @typescript-eslint/no-unused-vars */
@@ -25,7 +25,7 @@ function RegistrationContainer() {
         <h1 className="m-bottom-1">{i18next.t('Registration:registration')}</h1>
         <h2>{i18next.t('Registration:registrationExplanation')}</h2>
       </div>
-      <div className={`row space-between ${styles.sectionContainer}`}>
+      {/* <div className={`row space-between ${styles.sectionContainer}`}>
         <FormInput
           className={styles.inputContainer}
           label={i18next.t('Registration:name')}
@@ -75,7 +75,7 @@ function RegistrationContainer() {
           placeholder={i18next.t('Registration:confirmPasswordPlaceholder') as string}
           onChange={handleInputChange}
         />
-      </div>
+      </div> */}
       <div className={`column center ${styles.sectionContainer}`}>
         <button type="submit" className={`full-width m-bottom-1 ${styles.button}`}>
           {i18next.t('RecoverPassword:enter')}

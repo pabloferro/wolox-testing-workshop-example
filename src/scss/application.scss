@@ -1,21 +1,63 @@
 @import '~wolox-equalizer/equalizer';
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;600;700&display=swap');
 
 @import 'layout';
-
 @import 'margins';
-
 @import 'components';
+@import './variables/colors';
+@import './variables/variables';
+@import 'typography';
 
-// TODO: Edit this global styles
-
-body {
+* {
+  box-sizing: border-box;
+  font-family: Poppins, sans-serif;
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Roboto, Oxygen, Ubuntu, 'Droid Sans', sans-serif;
+}
+
+body {
+  background-color: $gray;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+.button {
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 12px 8px;
+  text-align: center;
+  transition: all $transition-duration $transition-function;
+
+  &.primary {
+    background-color: $blue;
+    border: 1px solid $blue;
+    color: $white;
+
+    &:hover,
+    &:focus {
+      background-color: transparent;
+      color: $blue;
+    }
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+.link {
+  color: $blue;
+  cursor: pointer;
+  text-decoration: underline;
+  transition: color $quick-transition-duration $transition-function;
+
+  &:hover,
+  &:focus {
+    color: $white;
+    text-decoration: none;
+  }
+}
+
+.white-color {
+  color: $white;
 }
