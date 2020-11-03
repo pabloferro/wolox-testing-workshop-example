@@ -57,7 +57,7 @@ function Home() {
         <Card data={character} />
       </div>
       <button type="button" className="button secondary small-title m-bottom-4" onClick={handleLogout}>
-        {i18next.t('Home:watchMore')}
+        {i18next.t('Home:seeMore')}
       </button>
     </main>
   );
