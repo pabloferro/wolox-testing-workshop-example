@@ -9,6 +9,7 @@ import { login, setCurrentUser } from '~services/AuthServices';
 import { useLazyRequest } from '~app/hooks/useRequest';
 import FormInput from '~components/FormInput';
 import PATHS from '~components/Routes/paths';
+import Loading from '~components/Spinner/components/loading';
 
 import { VALIDATION_SCHEMA, FIELD_NAMES } from './constants';
 import styles from './styles.module.scss';
@@ -18,7 +19,7 @@ function Login() {
   const { dirtyFields } = formState;
   const history = useHistory();
   const dispatch = useDispatch();
-  const [, , , loginRequest] = useLazyRequest({
+  const [, loading, , loginRequest] = useLazyRequest({
     request: (credentials: Credentials) => login(credentials),
     withPostSuccess: response => {
       const userResponse = response as User;
@@ -54,7 +55,8 @@ function Login() {
               isDirty={dirtyFields?.hasOwnProperty(FIELD_NAMES.PASSWORD)}
             />
             <div className="column">
-              <button type="submit" className="button primary base-text fw-bold m-bottom-4">
+              <button type="submit" className="row middle center button primary base-text fw-bold m-bottom-4">
+                {loading && <Loading name="circle" className="m-right-1" />}
                 {i18next.t('Login:enter')}
               </button>
               <a href={PATHS.registration} className={`small-text fw-bold link ${styles.link}`}>
