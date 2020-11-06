@@ -26,7 +26,7 @@ interface Props {
   };
   isDirty?: boolean;
   register: any;
-  onChange?: (e: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  onChange?: (e: React.FormEvent) => void;
 }
 
 function FormInput({ id, label, type, register, validationSchema, errors, isDirty, onChange }: Props) {
