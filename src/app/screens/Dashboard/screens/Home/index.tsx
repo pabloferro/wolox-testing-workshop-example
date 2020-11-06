@@ -5,8 +5,8 @@ import { actionCreators as authActions } from '~contexts/UserContext/reducer';
 import { useDispatch as useUserDispatch } from '~contexts/UserContext';
 import { logout, removeCurrentUser } from '~services/AuthServices';
 import { useLazyRequest } from '~app/hooks/useRequest';
+import Loading from '~components/Spinner/components/loading';
 
-import logo from './assets/logo.svg';
 import styles from './styles.module.scss';
 import { useSelector, Context, useDispatch } from './context';
 import { reducer, INITIAL_STATE, actionCreators } from './reducer';
@@ -36,7 +36,7 @@ function Home() {
   return (
     <div className={styles.app}>
       <header className={styles.appHeader}>
-        <img src={logo} className={styles.appLogo} alt="logo" />
+        <Loading className="m-bottom-4" />
         <p className={styles.text}>You are logged in. {foo}</p>
         <button type="button" className={styles.appLink} onClick={handleLogout}>
           Logout

@@ -7,16 +7,16 @@ interface Props {
   label?: string;
   type?: string;
   validationSchema?: {
-    required: string;
-    maxLength: {
+    required?: string;
+    maxLength?: {
       value: number;
       message: string;
     };
-    minLength: {
+    minLength?: {
       value: number;
       message: string;
     };
-    pattern: {
+    pattern?: {
       value: any;
       message: string;
     };
@@ -26,7 +26,7 @@ interface Props {
   };
   isDirty?: boolean;
   register: any;
-  onChange?: (e: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  onChange?: (e: React.FormEvent) => void;
 }
 
 function FormInput({ id, label, type, register, validationSchema, errors, isDirty, onChange }: Props) {
