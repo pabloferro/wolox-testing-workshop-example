@@ -2,15 +2,18 @@ import React from 'react';
 
 import styles from './styles.module.scss';
 
+export interface IData {
+  id: number;
+  description: string;
+  height: string;
+  name: string;
+  photo: string;
+  realName: string;
+  weight: string;
+}
+
 interface Props {
-  data: {
-    description: string;
-    height: string;
-    name: string;
-    photo: string;
-    realName: string;
-    weight: string;
-  };
+  data: IData;
 }
 
 function Card({ data }: Props) {
