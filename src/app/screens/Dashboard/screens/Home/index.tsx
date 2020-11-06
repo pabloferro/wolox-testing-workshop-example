@@ -2,10 +2,6 @@ import React, { useEffect } from 'react';
 import i18next from 'i18next';
 
 import withProvider from '~components/ProviderWrapper';
-import { actionCreators as authActions } from '~contexts/UserContext/reducer';
-import { useDispatch as useUserDispatch } from '~contexts/UserContext';
-import { logout, removeCurrentUser } from '~services/AuthServices';
-import { useLazyRequest } from '~app/hooks/useRequest';
 import Loading from '~components/Spinner/components/loading';
 
 import Card from './components/Card';
@@ -28,23 +24,11 @@ function Home() {
   // Example of how to use these custom hooks
   // const foo = useSelector(state => state.foo);
   const dispatch = useDispatch();
-  const userDispatch = useUserDispatch();
-  const [, loading, , logoutRequest] = useLazyRequest({
-    request: logout,
-    withPostSuccess: () => {
-      userDispatch(authActions.resetUser());
-      removeCurrentUser();
-    }
-  });
+  const loading = false;
 
   useEffect(() => {
     dispatch(actionCreators.setFoo('React'));
   }, [dispatch]);
-
-  const handleLogout = () => {
-    userDispatch(authActions.logout());
-    logoutRequest(null);
-  };
 
   return loading ? (
     <Loading />
@@ -56,7 +40,7 @@ function Home() {
         <Card data={character} />
         <Card data={character} />
       </div>
-      <button type="button" className="button secondary small-title m-bottom-4" onClick={handleLogout}>
+      <button type="button" className="button secondary small-title m-bottom-4">
         {i18next.t('Home:seeMore')}
       </button>
     </main>
