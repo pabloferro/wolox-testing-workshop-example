@@ -19,7 +19,7 @@ function Login() {
   const { dirtyFields } = formState;
   const history = useHistory();
   const dispatch = useDispatch();
-  const [, loading, , loginRequest] = useLazyRequest({
+  const [, loading, error, loginRequest] = useLazyRequest({
     request: (credentials: Credentials) => login(credentials),
     withPostSuccess: response => {
       const userResponse = response as User;
@@ -63,6 +63,11 @@ function Login() {
                 {i18next.t('Login:createAccount')}
               </a>
             </div>
+            {error && (
+              <small className={`small-text fw-semibold m-top-2 ${styles.error}`}>
+                {i18next.t('Login:apiError')}
+              </small>
+            )}
           </form>
         </div>
       </section>

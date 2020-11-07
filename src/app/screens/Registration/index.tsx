@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom';
 
 import { useDispatch } from '~contexts/UserContext';
 import { actionCreators, Credentials, User } from '~contexts/UserContext/reducer';
-import { login, setCurrentUser } from '~services/AuthServices';
+import { createUser, setCurrentUser } from '~services/AuthServices';
 import { useLazyRequest } from '~app/hooks/useRequest';
 import FormInput from '~components/FormInput';
 import Loading from '~components/Spinner/components/loading';
@@ -21,10 +21,9 @@ function Registration() {
   const { dirtyFields } = formState;
   const history = useHistory();
   const dispatch = useDispatch();
-  const [, loading, , loginRequest] = useLazyRequest({
-    request: (credentials: Credentials) => login(credentials),
+  const [, loading, error, loginRequest] = useLazyRequest({
+    request: (credentials: Credentials) => createUser(credentials),
     withPostSuccess: response => {
-      // TODO integrate this when backend
       const userResponse = response as User;
       dispatch(actionCreators.setUser(userResponse));
       setCurrentUser(userResponse);
@@ -102,6 +101,11 @@ function Registration() {
                 {i18next.t('Registration:goToLogin')}
               </a>
             </div>
+            {error && (
+              <small className={`small-text fw-semibold m-top-2 ${styles.error}`}>
+                {i18next.t('Login:apiError')}
+              </small>
+            )}
           </form>
         </div>
       </section>
