@@ -1,28 +1,37 @@
 import React from 'react';
-import { mount } from 'enzyme';
-
-import { RootComponent } from '~utils/tests';
+import { Router } from 'react-router-dom';
+import { createMemoryHistory } from 'history';
+import { render, fireEvent, screen } from '@testing-library/react';
 
 import Login from './index';
 
-describe('#Login', () => {
-  let component = null;
+// describe('when the inputs are empty', () => {
+//   test('it shows errors for required fields on submit', async () => {
+//     render(<Login />);
 
-  beforeEach(() => {
-    component = mount(
-      <RootComponent>
+//     fireEvent.click(await screen.findByRole('button'));
+
+//     // expect(await screen.findByText('This field is required')).toBeInTheDocument();
+//   });
+// });
+
+describe('when the inputs are correct', () => {
+  test.only('it logins on submit', async () => {
+    const history = createMemoryHistory();
+    render(
+      <Router history={history}>
         <Login />
-      </RootComponent>
+      </Router>
     );
-  });
-
-  afterEach(() => {
-    component.unmount();
-  });
-
-  describe('When the component is mounted', () => {
-    it('matches last snapshot', () => {
-      expect(component).toMatchSnapshot();
+    fireEvent.change(await screen.findByLabelText(/Login:email/i), {
+      target: { value: 'pablo.ferro@wolox.com.ar' }
     });
+
+    fireEvent.change(await screen.findByLabelText(/Login:password/i), {
+      target: { value: 'MiContraseña1234' }
+    });
+
+    fireEvent.click(await screen.findByRole('button'));
+    expect(await screen.findByText('Hello, Pablo'), undefined, { timeout: 5000 }).toBeInTheDocument();
   });
 });

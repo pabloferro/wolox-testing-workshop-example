@@ -22,20 +22,17 @@ export const getCurrentUser = () => LocalStorageService.getValue(TOKEN_FIELD_NAM
 export const removeCurrentUser = () => LocalStorageService.removeValue(TOKEN_FIELD_NAME);
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export const login = (credentials: Credentials): Promise<ApiResponse<User, LoginError>> =>
+export const login = (credentials: Credentials): Promise<ApiResponse<User, LoginError>> => {
   // TODO: Implement call to authentication API here
   // api.post('/login', credentials );
-  new Promise(resolve => {
-    setTimeout(() => {
-      resolve({
-        ok: true,
-        data: { sessionToken: credentials.password === 'asd1' ? 'invalid' : 'token', id: 1234 },
-        problem: null,
-        originalError: null
-      });
-    }, 1000); // eslint-disable-line no-magic-numbers
+  console.log('Login');
+  return Promise.resolve({
+    ok: true,
+    data: { sessionToken: credentials.password === 'asd1' ? 'invalid' : 'token', id: 1234 },
+    problem: null,
+    originalError: null
   });
-
+};
 export const logout = (): Promise<ApiResponse<User, LoginError>> =>
   new Promise(resolve => {
     setTimeout(() => {
