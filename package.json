@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^11.1.1",
     "apisauce": "^1.1.2",
     "babel-plugin-module-resolver": "^3.2.0",
@@ -54,6 +53,7 @@
     "@babel/plugin-proposal-optional-chaining": "^7.11.0",
     "@rescripts/cli": "0.0.13",
     "@testing-library/dom": "^7.28.1",
+    "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/user-event": "^7.2.1",
     "@types/enzyme": "^3.10.7",
     "@types/jest": "^24.9.1",
@@ -83,6 +83,7 @@
     "eslint-plugin-react": "^7.14.3",
     "husky": "^4.3.0",
     "minimist": "^1.2.0",
+    "msw": "^0.22.3",
     "mutationobserver-shim": "^0.3.7",
     "postcss-html": "^0.36.0",
     "postcss-syntax": "^0.36.2",

@@ -1,6 +1,6 @@
 import { create } from 'apisauce';
 
-const baseURL = 'https://private-5a5cf-dccomics.apiary-mock.com/';
+export const baseURL = 'https://private-5a5cf-dccomics.apiary-mock.com/';
 
 const STATUS_CODES = {
   unauthorized: 401
