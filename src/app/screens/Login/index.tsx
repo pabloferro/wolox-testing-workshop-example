@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
 
 import { useDispatch } from '~contexts/UserContext';
-import { actionCreators, Credentials } from '~contexts/UserContext/reducer';
+import { actionCreators, Credentials, User } from '~contexts/UserContext/reducer';
 import { login, setCurrentUser } from '~services/AuthServices';
 import { useLazyRequest } from '~app/hooks/useRequest';
 import FormInput from '~components/FormInput';
@@ -22,13 +22,10 @@ function Login() {
   const [, loading, error, loginRequest] = useLazyRequest({
     request: (credentials: Credentials) => login(credentials),
     withPostSuccess: response => {
-      console.log('response:', response);
-      if (response) {
-        dispatch(actionCreators.setUser(response));
-        setCurrentUser(response);
-        console.log('Push!');
-        history.push('/');
-      }
+      const userResponse = response as User;
+      dispatch(actionCreators.setUser(userResponse));
+      setCurrentUser(userResponse);
+      history.push('/');
     }
   });
 
