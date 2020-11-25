@@ -5,6 +5,6 @@ import 'mutationobserver-shim';
 
 configure({ adapter: new Adapter() });
 
-jest.mock('i18next', () => ({
-  t: key => key
-}));
+// jest.mock('i18next', () => ({
+//   t: key => key
+// }));
