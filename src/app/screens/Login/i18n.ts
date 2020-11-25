@@ -6,5 +6,6 @@ i18next.addResources('es', 'Login', {
   enter: 'Log In',
   email: 'Email',
   password: 'Password',
-  createAccount: 'Don’t have an account?'
+  createAccount: 'Don’t have an account?',
+  apiError: 'Error processing the request'
 });

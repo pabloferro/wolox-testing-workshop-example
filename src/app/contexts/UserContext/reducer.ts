@@ -3,6 +3,7 @@ import { Nullable } from '~utils/types';
 export interface User {
   id: number;
   sessionToken: string;
+  username: string;
 }
 
 export interface UserState {
