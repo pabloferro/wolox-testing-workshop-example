@@ -38,6 +38,10 @@
   align-self: flex-start;
 }
 
+.error {
+  color: $red;
+}
+
 @keyframes fadeInUp {
   from {
     opacity: 0;

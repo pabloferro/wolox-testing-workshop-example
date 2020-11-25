@@ -1,10 +1,6 @@
 import { create } from 'apisauce';
 
-const baseURL = 'http://wolox.com';
-
-if (baseURL === 'http://wolox.com') {
-  console.warn('API baseURL has not been properly initialized'); // eslint-disable-line no-console
-}
+const baseURL = 'https://private-5a5cf-dccomics.apiary-mock.com/';
 
 const STATUS_CODES = {
   unauthorized: 401

@@ -1,13 +1,14 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import i18next from 'i18next';
 import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
 
 import { useDispatch } from '~contexts/UserContext';
 import { actionCreators, Credentials, User } from '~contexts/UserContext/reducer';
-import { login, setCurrentUser } from '~services/AuthServices';
+import { createUser, setCurrentUser } from '~services/AuthServices';
 import { useLazyRequest } from '~app/hooks/useRequest';
 import FormInput from '~components/FormInput';
+import Loading from '~components/Spinner/components/loading';
 import PATHS from '~components/Routes/paths';
 import { ERROR_MESSAGES } from '~constants/errorMessages';
 
@@ -20,10 +21,9 @@ function Registration() {
   const { dirtyFields } = formState;
   const history = useHistory();
   const dispatch = useDispatch();
-  const [, , , loginRequest] = useLazyRequest({
-    request: (credentials: Credentials) => login(credentials),
+  const [, loading, error, loginRequest] = useLazyRequest({
+    request: (credentials: Credentials) => createUser(credentials),
     withPostSuccess: response => {
-      // TODO integrate this when backend
       const userResponse = response as User;
       dispatch(actionCreators.setUser(userResponse));
       setCurrentUser(userResponse);
@@ -31,18 +31,15 @@ function Registration() {
     }
   });
 
-  const handleChangePasswordRepeat = useCallback(
-    e => {
-      const { password } = getValues();
-      const { value } = e.target;
-      if (value === password) {
-        return clearErrors('passwordRepeat');
-      }
-      setError(FIELD_NAMES.PASSWORD_REPEAT, { type: 'notMatch', message: ERROR_MESSAGES.passwordRepeat });
-      return 0;
-    },
-    [clearErrors, getValues, setError]
-  );
+  function handleChangePasswordRepeat(e: React.FormEvent) {
+    const { password } = getValues();
+    const { value } = e.target as HTMLInputElement;
+    if (value === password) {
+      return clearErrors('passwordRepeat');
+    }
+    setError(FIELD_NAMES.PASSWORD_REPEAT, { type: 'notMatch', message: ERROR_MESSAGES.passwordRepeat });
+    return 0;
+  }
 
   return (
     <main className={styles.container}>
@@ -96,13 +93,19 @@ function Registration() {
               onChange={handleChangePasswordRepeat}
             />
             <div className="column">
-              <button type="submit" className="button primary base-text fw-bold m-bottom-4">
+              <button type="submit" className="row middle center button primary base-text fw-bold m-bottom-4">
+                {loading && <Loading name="circle" className="m-right-1" />}
                 {i18next.t('Registration:submit')}
               </button>
               <a href={PATHS.login} className={`small-text fw-bold link ${styles.link}`}>
                 {i18next.t('Registration:goToLogin')}
               </a>
             </div>
+            {error && (
+              <small className={`small-text fw-semibold m-top-2 ${styles.error}`}>
+                {i18next.t('Login:apiError')}
+              </small>
+            )}
           </form>
         </div>
       </section>
