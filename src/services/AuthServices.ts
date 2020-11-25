@@ -1,5 +1,3 @@
-import { ApiResponse } from 'apisauce';
-
 import { User, Credentials } from '~app/contexts/UserContext/reducer';
 
 import api from '../config/api';
@@ -21,10 +19,8 @@ export const getCurrentUser = () => LocalStorageService.getValue(TOKEN_FIELD_NAM
 
 export const removeCurrentUser = () => LocalStorageService.removeValue(TOKEN_FIELD_NAME);
 
-export const login = (credentials: Credentials): Promise<ApiResponse<User, LoginError>> =>
-  api.post('/login', credentials);
+export const login = (credentials: Credentials) => api.post<User, LoginError>('/login', credentials);
 
-export const createUser = (credentials: Credentials): Promise<ApiResponse<User, LoginError>> =>
-  api.post('/register', credentials);
+export const createUser = (credentials: Credentials) => api.post<User, LoginError>('/register', credentials);
 
-export const logout = (): Promise<ApiResponse<User, LoginError>> => api.get('/login');
+export const logout = () => api.get<User, LoginError>('/login');
