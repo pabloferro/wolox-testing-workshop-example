@@ -5,6 +5,7 @@ import { actionCreators as authActions } from '~contexts/UserContext/reducer';
 import { useDispatch as useUserDispatch, useSelector } from '~contexts/UserContext';
 import { logout, removeCurrentUser } from '~services/AuthServices';
 import { useLazyRequest } from '~app/hooks/useRequest';
+import ToggleSpoilersButton from '~components/ToggleSpoilersButton';
 
 import Greeting from '../Greeting';
 
@@ -31,6 +32,7 @@ function Navbar() {
       <header className={`row space-between middle ${styles.navContent}`}>
         <h1 className="title white-color">{i18next.t('Home:navTitle')}</h1>
         <div className="row">
+          <ToggleSpoilersButton className="m-right-5" />
           <Greeting userName={user.username} />
           <button type="button" className="link white-color small-title" onClick={handleLogout}>
             {i18next.t('Home:logout')}
