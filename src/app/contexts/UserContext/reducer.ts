@@ -19,7 +19,7 @@ export const INITIAL_STATE = {
   user: null
 };
 
-enum ActionTypes {
+export enum ActionTypes {
   SET_USER = 'SET_USER',
   RESET_USER = 'RESET_USER',
   LOGIN = 'LOGIN',
