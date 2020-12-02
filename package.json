@@ -54,6 +54,7 @@
     "@rescripts/cli": "0.0.13",
     "@testing-library/dom": "^7.28.1",
     "@testing-library/jest-dom": "^5.11.6",
+    "@testing-library/react-hooks": "^3.4.2",
     "@testing-library/user-event": "^7.2.1",
     "@types/enzyme": "^3.10.7",
     "@types/jest": "^24.9.1",
