@@ -53,7 +53,7 @@ export const actionCreators = {
   logout: (): Logout => ({ type: ActionTypes.LOGOUT })
 };
 
-export const reducer = (state: UserState, action: Action): UserState => {
+export const reducer: (state: UserState, action: Action) => UserState = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case 'SET_USER': {
       return { ...state, user: action.payload };
