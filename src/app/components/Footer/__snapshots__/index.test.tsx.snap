@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<footer
+  class="column center middle footer"
+>
+  <header
+    class="column center m-bottom-8"
+  >
+    <q
+      cite="Home:footerQuoteAuthor"
+      class="base-text fw-bold white-color"
+    >
+      Home:footerQuote
+    </q>
+    <span
+      class="base-text fw-bold white-color"
+    >
+      Home:footerQuoteAuthor
+    </span>
+  </header>
+  <small
+    class="small-text white-color fw-thin self-end"
+  >
+    Home:madeText
+    <span
+      aria-label="love"
+      class="m-left-1"
+      role="img"
+    >
+      ❤️
+    </span>
+    Home:madeBy
+  </small>
+</footer>
+`;
