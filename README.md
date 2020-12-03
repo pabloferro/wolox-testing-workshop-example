@@ -2,6 +2,8 @@
 
 React app example for the wolox fronted testing workshop.
 
+Tested example in branch [tested](https://github.com/pabloferro/wolox-testing-workshop-example/tree/tested).
+
 ### Installing
 
 `npm install`
