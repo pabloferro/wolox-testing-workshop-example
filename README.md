@@ -1,6 +1,6 @@
 ## Front-end Testing Workshop Example
 
-React app example for testing.
+React app example for the wolox fronted testing workshop.
 
 ### Installing
 
@@ -10,11 +10,11 @@ React app example for testing.
 
 To start the server by default (development) run:
 
-`npm run start`
+```npm run start```
 
 To start a specific environment, run:
 
-`npm run start-env environment`
+```npm run start-env environment```
 
 ### Running Tests
 
